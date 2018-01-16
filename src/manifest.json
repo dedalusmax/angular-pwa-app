@@ -1,0 +1,14 @@
+{
+    "name": "manifest-test",
+    "short_name": "mt",
+    "start_url": "index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "black",
+    "theme_color": "#4e8ef7",
+    "icons": [{
+        "src": "/assets/apple.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }]
+}

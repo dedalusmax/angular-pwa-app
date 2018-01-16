@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  estimate;
+  percentage;
+
+  constructor() {
+    // window.navigator.storage.estimate().then(function (estimate) {
+    //   this.estimate = estimate;
+    //   this.percentage = (estimate.usage / estimate.quota).toFixed(2);
+    // });
+  }
 }
