@@ -1,0 +1,24 @@
+/* All available colors are found in node_modules/@angular/material/_theming.scss.
+ Use these ase a reference to choose the colors for your app.*/
+@import '~@angular/material/_theming.scss';
+@include mat-core();
+
+$primary: mat-palette($mat-light-blue); // mat-palette generates a Material Design color palette out of a base color palette
+$accent: mat-palette($mat-amber, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+@include angular-material-theme($theme);
+
+// Multiple themes
+
+// Main colors most widely used across all screens and components
+$dark-primary: mat-palette($mat-pink, 700, 500, 900);
+// Also known as the secondary color. Used for floating action buttons and interactive elements.
+$dark-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+// Colors to convey error state.
+$dark-warn: mat-palette($mat-deep-orange);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+.m2app-dark {
+  @include angular-material-theme($dark-theme);
+}
