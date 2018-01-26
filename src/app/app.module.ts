@@ -29,6 +29,7 @@ import { CurrencyService } from './shared/services/currency.service';
   imports: [
     BrowserModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/service-worker.js', { scope: './app/' , enabled: environment.production }),
     FormsModule,
     HttpModule,
     MaterialModule,
