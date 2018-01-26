@@ -35,5 +35,27 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": ["/Role"],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 20,
+        "maxAge": "0h",
+        "timeout": "5s"
+      }
+    },
+    {
+      "name": "api-freshness",
+      "urls": ["/Currency", "/User"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "0h",
+        "timeout": "5s"
+      }
+    }
   ]
 }

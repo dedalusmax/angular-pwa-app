@@ -1,8 +1,11 @@
 <h1 mat-dialog-title>Dialog title</h1>
 <mat-dialog-content>
     <mat-form-field hintLabel="Max 10 characters">
-        <input matInput #input maxlength="10" placeholder="Enter some input">
+        <input matInput #input maxlength="10" placeholder="Enter name" [(ngModel)]="model.name" #name="ngModel">
         <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter displayName" [(ngModel)]="model.displayName" #displayName="ngModel">
     </mat-form-field>
     <mat-form-field>
         <textarea matInput placeholder="Textarea"></textarea>

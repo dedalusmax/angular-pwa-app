@@ -22,38 +22,38 @@
     </mat-toolbar>
 
     <mat-tab-group class="mat-tab-group-container">
-      <mat-tab label="Tab 1">
-        <mat-table #table [dataSource]="dataSource">
+      <mat-tab label="USERS">
 
-          <!-- Position Column -->
-          <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        <!-- <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field> -->
+
+        <mat-table #table [dataSource]="dataSource" matSort>
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
           </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.userName}} </mat-cell>
           </ng-container>
 
-          <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
           </ng-container>
 
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
-            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+          <ng-container matColumnDef="displayName">
+            <mat-header-cell *matHeaderCellDef> Display name </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.displayName}} </mat-cell>
           </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-header-row *matHeaderRowDef="['id', 'userName', 'email', 'displayName']"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['id', 'userName', 'email', 'displayName'];"></mat-row>
         </mat-table>
-
-        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+        <mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]">
         </mat-paginator>
 
         <span class="done" matTooltip="Open dialog">
@@ -62,7 +62,63 @@
           </button>
         </span>
       </mat-tab>
-      <mat-tab label="Tab 2">
+     
+
+      <mat-tab label="ROLES">
+
+        <mat-table #table [dataSource]="roles">
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-cell *matCellDef="let role"> {{role.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let role"> {{role.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="displayName">
+            <mat-header-cell *matHeaderCellDef> Display name </mat-header-cell>
+            <mat-cell *matCellDef="let role"> {{role.displayName}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedRoleColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedRoleColumns;"></mat-row>
+        </mat-table>
+
+      </mat-tab>
+      <mat-tab label="CURRENCIES">
+
+        <mat-table #table [dataSource]="currencies">
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-cell *matCellDef="let currency"> {{currency.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="displayName">
+            <mat-header-cell *matHeaderCellDef> Display name </mat-header-cell>
+            <mat-cell *matCellDef="let currency"> {{currency.displayName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="toUSD">
+            <mat-header-cell *matHeaderCellDef> To USD </mat-header-cell>
+            <mat-cell *matCellDef="let currency"> {{currency.toUSD}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="fromUSD">
+            <mat-header-cell *matHeaderCellDef> From USD </mat-header-cell>
+            <mat-cell *matCellDef="let currency"> {{currency.fromUSD}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedCurrenciesColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedCurrenciesColumns;"></mat-row>
+        </mat-table>
+
+      </mat-tab>
+
+      <mat-tab label="SAMPLE TAB">
         <mat-card>
           <button mat-button>All</button>
           <button mat-raised-button>Of</button>
