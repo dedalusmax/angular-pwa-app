@@ -53,16 +53,7 @@
           <mat-header-row *matHeaderRowDef="['id', 'userName', 'email', 'displayName']"></mat-header-row>
           <mat-row *matRowDef="let row; columns: ['id', 'userName', 'email', 'displayName'];"></mat-row>
         </mat-table>
-        <mat-paginator #paginator [length]="dataSource.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]">
-        </mat-paginator>
-
-        <span class="done" matTooltip="Open dialog">
-          <button mat-fab color="accent" (click)="openDialog();">
-            <mat-icon>check circle</mat-icon>
-          </button>
-        </span>
       </mat-tab>
-     
 
       <mat-tab label="ROLES">
 
@@ -115,7 +106,16 @@
           <mat-header-row *matHeaderRowDef="displayedCurrenciesColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedCurrenciesColumns;"></mat-row>
         </mat-table>
+        
+        <mat-paginator #paginator [length]="currencies.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25]">
+        </mat-paginator>
 
+        <span class="done" matTooltip="Open dialog">
+          <button (click)="refresh();">REFRESH</button>
+          <button mat-fab color="accent" (click)="openDialog();">
+            <mat-icon>check circle</mat-icon>
+          </button>
+        </span>
       </mat-tab>
 
       <mat-tab label="SAMPLE TAB">

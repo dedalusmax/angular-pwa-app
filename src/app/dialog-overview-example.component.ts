@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
-import { Role } from './shared/models/role';
-import { RoleService } from './shared/services/role.service';
+import { Currency } from './shared/models/currency';
+import { CurrencyService } from './shared/services/currency.service';
 
 @Component({
     selector: 'app-dialog-overview-example',
@@ -12,10 +12,10 @@ import { RoleService } from './shared/services/role.service';
 })
 export class DialogOverviewExampleComponent implements OnInit {
 
-    public model: Role;
+    public model: Currency;
 
     constructor(
-        private dataService: RoleService,
+        private dataService: CurrencyService,
         public dialogRef: MatDialogRef<DialogOverviewExampleComponent>,
         @Inject(MAT_DIALOG_DATA) public theme: any,
         overlayContainer: OverlayContainer) {
@@ -27,11 +27,12 @@ export class DialogOverviewExampleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.model = new Role();
+        this.model = new Currency();
     }
+
     save() {
 
-        this.dataService.saveRole(this.model)
+        this.dataService.saveCurrency(this.model)
             .subscribe((res: any) => {
                 this.dialogRef.close(this.model);
             },

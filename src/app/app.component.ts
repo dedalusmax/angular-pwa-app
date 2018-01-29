@@ -43,10 +43,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     private currencyService: CurrencyService) { }
 
   ngOnInit() {
+
+    if (navigator.onLine) {
+      // TODO: sync it
+    }
+
     this.getUsers();
     this.getRoles();
     this.getCurrencies();
 
+    // caches.open('ngsw:1:data:dynamic:api-freshness:cache').then(function(cache) {
+    //   // Cache is created and accessible
+    // });
   }
 
   /**
@@ -55,7 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.currencies.paginator = this.paginator;
   }
 
   getUsers() {
@@ -98,5 +106,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(DialogOverviewExampleComponent, {
       data: this.isDarkTheme
     });
+
+    dialogRef.beforeClose().subscribe((result: Currency) => {
+      if (result) {
+        this.getCurrencies();
+      }
+    });
+  }
+  refresh() {
+    this.getCurrencies();
   }
 }

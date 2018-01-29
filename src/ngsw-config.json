@@ -39,21 +39,20 @@
   "dataGroups": [
     {
       "name": "api-performance",
-      "urls": ["/Role"],
+      "urls": ["/Role", "/User"],
       "cacheConfig": {
         "strategy": "performance",
-        "maxSize": 20,
-        "maxAge": "0h",
-        "timeout": "5s"
+        "maxSize": 100,
+        "maxAge": "3d"
       }
     },
     {
       "name": "api-freshness",
-      "urls": ["/Currency", "/User"],
+      "urls": ["/Currency"],
       "cacheConfig": {
         "strategy": "freshness",
-        "maxSize": 20,
-        "maxAge": "0h",
+        "maxSize": 100,
+        "maxAge": "3d",
         "timeout": "5s"
       }
     }
